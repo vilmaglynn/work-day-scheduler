@@ -1,6 +1,8 @@
 // save reference to important DOM elements
 var currentDay = $("#currentDay");
+var now = new Date().getHours();
 
+console.log(now);
 // handle displaying the time
 function displayTime() {
   var rightNow = dayjs().format("DD MMMM YYYY [at] HH:mm:ss");
@@ -20,16 +22,41 @@ $(document).ready(function () {
   // Generate rows for each hour from 1:00 to 23:00
   for (var i = 0; i <= 23; i++) {
     var time = i + ":00";
-    var row = $(
-      "<tr>" +
-        "<td>" +
-        time +
-        "</td>" +
-        "<td><input type='text' class='activityInput'></td>" +
-        "<td><button class='styledButton'>Add/Save</button></td>" +
-        "</tr>"
-    );
-    tableBody.append(row);
+
+    if (i < now) {
+      var row = $(
+        "<tr>" +
+          "<td>" +
+          time +
+          "</td>" +
+          "<td><input type='text' class='activityInput past'></td>" +
+          "<td><button class='styledButton'>Add/Save</button></td>" +
+          "</tr>"
+      );
+      tableBody.append(row);
+    } else if (i === now) {
+      var row = $(
+        "<tr>" +
+          "<td>" +
+          time +
+          "</td>" +
+          "<td><input type='text' class='activityInput present'></td>" +
+          "<td><button class='styledButton'>Add/Save</button></td>" +
+          "</tr>"
+      );
+      tableBody.append(row);
+    } else if (i > now) {
+      var row = $(
+        "<tr>" +
+          "<td>" +
+          time +
+          "</td>" +
+          "<td><input type='text' class='activityInput future'></td>" +
+          "<td><button class='styledButton'>Add/Save</button></td>" +
+          "</tr>"
+      );
+      tableBody.append(row);
+    }
   }
 
   // Create the table and append it to the container
