@@ -27,19 +27,59 @@ $(document).ready(function () {
 
     // Create row with input and buttons
 
-    var row = $(
-      "<tr>" +
-        "<td>" +
-        time +
-        "</td>" +
-        "<td><input type='text' class='activityInput' data-hour='" +
-        i +
-        "'></td>" +
-        "<td><button class='styledButton addSaveButton'>Add/Save</button></td>" +
-        "<td><button class='styledButton deleteButton'>Delete</button></td>" +
-        "</tr>"
-    );
+    // var row = $(
+    //   "<tr>" +
+    //     "<td>" +
+    //     time +
+    //     "</td>" +
+    //     "<td><input type='text' class='activityInput' data-hour='" +
+    //     i +
+    //     "'></td>" +
+    //     "<td><button class='styledButton addSaveButton'>Add/Save</button></td>" +
+    //     "<td><button class='styledButton deleteButton'>Delete</button></td>" +
+    //     "</tr>"
+    // );
 
+    if (i < now) {
+      var row = $(
+        "<tr>" +
+          "<td>" +
+          time +
+          "</td>" +
+          "<td><input type='text' class='activityInput past' data-hour='" +
+          i +
+          "'></td>" +
+          "<td><button class='styledButton addSaveButton'>Add/Save</button></td>" +
+          "<td><button class='styledButton deleteButton'>Delete</button></td>" +
+          "</tr>"
+      );
+    } else if (i === now) {
+      var row = $(
+        "<tr>" +
+          "<td>" +
+          time +
+          "</td>" +
+          "<td><input type='text' class='activityInput present' data-hour='" +
+          i +
+          "'></td>" +
+          "<td><button class='styledButton addSaveButton'>Add/Save</button></td>" +
+          "<td><button class='styledButton deleteButton'>Delete</button></td>" +
+          "</tr>"
+      );
+    } else {
+      var row = $(
+        "<tr>" +
+          "<td>" +
+          time +
+          "</td>" +
+          "<td><input type='text' class='activityInput future' data-hour='" +
+          i +
+          "'></td>" +
+          "<td><button class='styledButton addSaveButton'>Add/Save</button></td>" +
+          "<td><button class='styledButton deleteButton'>Delete</button></td>" +
+          "</tr>"
+      );
+    }
     // Set the input value if there is stored data for this hour
     if (storedData) {
       var storedHourData = JSON.parse(storedData);
