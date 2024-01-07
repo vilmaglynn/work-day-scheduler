@@ -22,11 +22,12 @@ Create a simple calendar application that allows a user to save events for each 
 ## Usage
 
 Link to deployed page
+https://vilmaglynn.github.io/work-day-scheduler/
 
 
 
 
-![portfolio](./assets/coding-quiz-image.png)
+![portfolio](./assets/images/screenshot.png)
 
 ## License
 MIT License
