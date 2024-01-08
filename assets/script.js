@@ -17,12 +17,13 @@ $(document).ready(function () {
   var tableHeader = $(
     "<thead><tr><th>Time</th><th>Activity</th><th>Add/Save</th><th>Delete</th></tr></thead>"
   );
+  // Add labels for guidance
 
   // Create table body
   var tableBody = $("<tbody></tbody>");
 
   // Generate rows for each hour from 0:00 to 23:00
-  for (var i = 0; i <= 23; i++) {
+  for (var i = 9; i <= 18; i++) {
     var time = i + ":00";
 
     // Create row with input and buttons
